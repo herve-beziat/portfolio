@@ -1,0 +1,312 @@
+  /* ============================================================
+     THÈMES — tokens de DESIGN.md / THEMES.md
+     Chaque thème redéfinit les variables via [data-theme="..."].
+     :root = valeurs Cyber (défaut + fallback). Switch géré en JS
+     (data-theme sur <html> + persistance localStorage).
+     ============================================================ */
+  :root,
+  [data-theme="cyber"] {
+    --bg: #0d1117;
+    --bg2: #161b22;
+    --bg3: #1f2937;
+    --border: #30363d;
+    --accent: #58a6ff;
+    --accent2: #79c0ff;
+    --neon: #3fb950;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --font-body: system-ui, -apple-system, sans-serif;
+    --font-mono: 'Courier New', monospace;
+    --btn-primary-text: #0d1117;
+  }
+
+  /* ---------- NORD (nordique épuré, palette froide) ---------- */
+  [data-theme="nord"] {
+    --bg: #2e3440;
+    --bg2: #3b4252;
+    --bg3: #434c5e;
+    --border: #4c566a;
+    --accent: #88c0d0;
+    --accent2: #81a1c1;
+    --neon: #a3be8c;
+    --text: #eceff4;
+    --muted: #d8dee9;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --font-body: 'Nunito', sans-serif;
+    --font-mono: 'Courier New', monospace;
+    --btn-primary-text: #2e3440;
+  }
+  [data-theme="nord"] .btn-outline { border-style: dashed; }
+
+  /* ---------- SOLAIRE (clair et chaleureux, Solarized Light) ---------- */
+  [data-theme="solar"] {
+    --bg: #fdf6e3;
+    --bg2: #eee8d5;
+    --bg3: #e0dac8;
+    --border: #cdc7b3;
+    --accent: #cb4b16;
+    --accent2: #d06f3a;
+    --neon: #859900;
+    --text: #073642;
+    --muted: #657b83;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --font-body: 'Lora', serif;
+    --font-mono: 'Courier New', monospace;
+    --btn-primary-text: #ffffff;
+  }
+  /* Boutons en pill + double bordure sur le outline */
+  [data-theme="solar"] .btn-primary { border-radius: 999px; }
+  [data-theme="solar"] .btn-outline {
+    border-radius: 999px;
+    outline: 1px solid var(--border);
+    outline-offset: 3px;
+  }
+
+  /* ---------- MINUIT (violet sombre, atmosphère créative) ---------- */
+  [data-theme="minuit"] {
+    --bg: #13111c;
+    --bg2: #1c1928;
+    --bg3: #252234;
+    --border: #312e45;
+    --accent: #a78bfa;
+    --accent2: #c4b5fd;
+    --neon: #f472b6;
+    --text: #ede9fe;
+    --muted: #a094c7;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --font-body: 'Poppins', sans-serif;
+    --font-mono: 'Courier New', monospace;
+    --btn-primary-text: #ffffff;
+  }
+  /* Primaire en dégradé, outline avec glow */
+  [data-theme="minuit"] .btn-primary {
+    background: linear-gradient(135deg, #a78bfa, #f472b6);
+    color: #fff;
+  }
+  [data-theme="minuit"] .btn-primary:hover {
+    background: linear-gradient(135deg, #c4b5fd, #f9a8d4);
+  }
+  [data-theme="minuit"] .btn-outline {
+    border-color: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+  }
+
+  /* Transition globale lors d'un changement de thème (spec THEMES.md) */
+  *, *::before, *::after {
+    transition: color .3s, background-color .3s, border-color .3s, box-shadow .3s;
+  }
+
+  /* ---------- Composants thématisés (via tokens) ---------- */
+  .section-label {
+    color: var(--neon);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--btn-primary-text);
+    border-radius: var(--radius);
+    padding: 10px 22px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--accent2); }
+  .btn-primary:active { transform: scale(.97); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 22px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+  .btn-outline:hover { color: var(--accent); border-color: var(--accent); }
+  .btn-outline:active { transform: scale(.97); }
+
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+
+  .card-interactive { transition: transform .25s, border-color .25s, color .3s, background-color .3s; }
+  .card-interactive:hover { transform: translateY(-4px); border-color: var(--accent); }
+
+  .tag {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+  }
+
+  /* ---------- Sélecteur de thèmes ---------- */
+  .theme-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    padding: 0;
+    transition: transform .2s, border-color .2s;
+  }
+  .theme-dot:hover { transform: scale(1.2); }
+  .theme-dot[aria-pressed="true"] {
+    border-color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 0 6px rgba(255, 255, 255, .35);
+  }
+
+  /* ---------- Filtres projets ---------- */
+  .filter-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+  .filter-btn:hover { color: var(--text); border-color: var(--accent); }
+  .filter-btn.active {
+    background: var(--accent);
+    color: var(--btn-primary-text);
+    border-color: var(--accent);
+  }
+
+  .project-card.is-hidden {
+    opacity: 0;
+    transform: scale(.96);
+    pointer-events: none;
+    display: none;
+  }
+
+  /* ---------- Curseur clignotant ---------- */
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  .cursor {
+    display: inline-block;
+    width: 0.6ch;
+    height: 1em;
+    background: var(--neon);
+    margin-left: 4px;
+    transform: translateY(2px);
+    animation: blink 1s step-end infinite;
+  }
+
+  /* ---------- Animations au scroll ---------- */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .5s ease, transform .5s ease;
+    transition-delay: calc(var(--i, 0) * 0.08s);
+  }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  /* ---------- Terminal easter egg ---------- */
+  #terminal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: #05080d;
+    color: #3fb950;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    padding: 24px;
+    display: none;
+    flex-direction: column;
+  }
+  #terminal.open { display: flex; }
+  #terminal-output { flex: 1; overflow-y: auto; white-space: pre-wrap; line-height: 1.5; }
+  #terminal-output a { color: #58a6ff; text-decoration: underline; }
+  .term-input-line { display: flex; align-items: center; margin-top: 8px; }
+  .term-input-line > span { color: #3fb950; margin-right: 8px; }
+  #terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #e6edf3;
+    font-family: inherit;
+    font-size: inherit;
+  }
+  #terminal-close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: #8b949e;
+    font-size: 1.4rem;
+    cursor: pointer;
+  }
+
+  /* ---------- Terminal sur petit écran (évite le débordement de l'ASCII) ---------- */
+  @media (max-width: 480px) {
+    #terminal { font-size: 0.72rem; padding: 16px; }
+    #terminal-output { overflow-x: hidden; }
+  }
+
+  /* ---------- Accessibilité : mouvement réduit ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+    .fade-in { opacity: 1; transform: none; }
+  }
+
+  /* ============================================================
+     MODE CV / IMPRESSION (@media print)
+     ============================================================ */
+  @media print {
+    nav, footer, #terminal, .no-print,
+    .theme-switcher, .hero-cta, .project-links, .filters {
+      display: none !important;
+    }
+    html, body {
+      background: #fff !important;
+      color: #000 !important;
+    }
+    main { max-width: 100% !important; padding-top: 0 !important; }
+    section { padding: 16px 0 !important; min-height: auto !important; page-break-inside: avoid; }
+    .section-label { color: #000 !important; }
+    .card, .tag, .btn-primary, .btn-outline {
+      background: #fff !important;
+      color: #000 !important;
+      border: 1px solid #999 !important;
+      box-shadow: none !important;
+    }
+    h1, h2, h3, p, span { color: #000 !important; }
+    .cursor { display: none !important; }
+    .projects-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    @page { margin: 1.5cm; }
+  }
