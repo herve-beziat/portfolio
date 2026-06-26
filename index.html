@@ -6,6 +6,12 @@
 <meta name="description" content="Portfolio d'Hervé Béziat — étudiant en Master Développement Web. Front-end, back-end et projets full-stack." />
 <title>Hervé Béziat · Portfolio</title>
 
+<!-- Polices des thèmes alternatifs : Nunito (Nord), Lora (Solaire), Poppins (Minuit).
+     Le thème Cyber utilise la police système (aucun chargement). -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
 <!-- Restaure le thème avant le premier paint (évite le flash) -->
 <script>
   (function () {
@@ -46,11 +52,10 @@
 
 <style>
   /* ============================================================
-     THÈME CYBER (défaut) — tokens de DESIGN.md / THEMES.md
-     Les 3 autres thèmes (nord, solar, minuit) seront ajoutés
-     dans une étape suivante via des blocs [data-theme="..."].
-     :root = valeurs Cyber → fallback propre si un thème non
-     encore défini est sélectionné.
+     THÈMES — tokens de DESIGN.md / THEMES.md
+     Chaque thème redéfinit les variables via [data-theme="..."].
+     :root = valeurs Cyber (défaut + fallback). Switch géré en JS
+     (data-theme sur <html> + persistance localStorage).
      ============================================================ */
   :root,
   [data-theme="cyber"] {
@@ -68,6 +73,80 @@
     --font-body: system-ui, -apple-system, sans-serif;
     --font-mono: 'Courier New', monospace;
     --btn-primary-text: #0d1117;
+  }
+
+  /* ---------- NORD (nordique épuré, palette froide) ---------- */
+  [data-theme="nord"] {
+    --bg: #2e3440;
+    --bg2: #3b4252;
+    --bg3: #434c5e;
+    --border: #4c566a;
+    --accent: #88c0d0;
+    --accent2: #81a1c1;
+    --neon: #a3be8c;
+    --text: #eceff4;
+    --muted: #d8dee9;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --font-body: 'Nunito', sans-serif;
+    --font-mono: 'Courier New', monospace;
+    --btn-primary-text: #2e3440;
+  }
+  [data-theme="nord"] .btn-outline { border-style: dashed; }
+
+  /* ---------- SOLAIRE (clair et chaleureux, Solarized Light) ---------- */
+  [data-theme="solar"] {
+    --bg: #fdf6e3;
+    --bg2: #eee8d5;
+    --bg3: #e0dac8;
+    --border: #cdc7b3;
+    --accent: #cb4b16;
+    --accent2: #d06f3a;
+    --neon: #859900;
+    --text: #073642;
+    --muted: #657b83;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --font-body: 'Lora', serif;
+    --font-mono: 'Courier New', monospace;
+    --btn-primary-text: #ffffff;
+  }
+  /* Boutons en pill + double bordure sur le outline */
+  [data-theme="solar"] .btn-primary { border-radius: 999px; }
+  [data-theme="solar"] .btn-outline {
+    border-radius: 999px;
+    outline: 1px solid var(--border);
+    outline-offset: 3px;
+  }
+
+  /* ---------- MINUIT (violet sombre, atmosphère créative) ---------- */
+  [data-theme="minuit"] {
+    --bg: #13111c;
+    --bg2: #1c1928;
+    --bg3: #252234;
+    --border: #312e45;
+    --accent: #a78bfa;
+    --accent2: #c4b5fd;
+    --neon: #f472b6;
+    --text: #ede9fe;
+    --muted: #a094c7;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --font-body: 'Poppins', sans-serif;
+    --font-mono: 'Courier New', monospace;
+    --btn-primary-text: #ffffff;
+  }
+  /* Primaire en dégradé, outline avec glow */
+  [data-theme="minuit"] .btn-primary {
+    background: linear-gradient(135deg, #a78bfa, #f472b6);
+    color: #fff;
+  }
+  [data-theme="minuit"] .btn-primary:hover {
+    background: linear-gradient(135deg, #c4b5fd, #f9a8d4);
+  }
+  [data-theme="minuit"] .btn-outline {
+    border-color: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
   }
 
   html { scroll-behavior: smooth; }
