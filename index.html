@@ -324,6 +324,12 @@
     cursor: pointer;
   }
 
+  /* ---------- Terminal sur petit écran (évite le débordement de l'ASCII) ---------- */
+  @media (max-width: 480px) {
+    #terminal { font-size: 0.72rem; padding: 16px; }
+    #terminal-output { overflow-x: hidden; }
+  }
+
   /* ---------- Accessibilité : mouvement réduit ---------- */
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -364,33 +370,33 @@
 
   <!-- ============================= NAVBAR ============================= -->
   <nav class="fixed top-0 inset-x-0 z-[100] h-[60px] border-b border-border" style="background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(12px);">
-    <div class="mx-auto flex h-full max-w-shell items-center justify-between px-8">
+    <div class="mx-auto flex h-full max-w-shell items-center justify-between px-5 sm:px-8">
       <a href="#hero" class="font-mono text-xl font-bold text-accent">&lt;Hervé /&gt;</a>
 
-      <div class="hidden items-center gap-8 md:flex">
-        <a href="#about" class="text-sm text-muted transition-colors hover:text-text">À propos</a>
-        <a href="#skills" class="text-sm text-muted transition-colors hover:text-text">Compétences</a>
-        <a href="#projects" class="text-sm text-muted transition-colors hover:text-text">Projets</a>
-        <a href="#contact" class="text-sm text-muted transition-colors hover:text-text">Contact</a>
+      <div class="flex items-center gap-4 md:gap-6">
+        <!-- Liens de navigation : masqués sous md (spec SECTIONS.md) -->
+        <div class="hidden items-center gap-8 md:flex">
+          <a href="#about" class="text-sm text-muted transition-colors hover:text-text">À propos</a>
+          <a href="#skills" class="text-sm text-muted transition-colors hover:text-text">Compétences</a>
+          <a href="#projects" class="text-sm text-muted transition-colors hover:text-text">Projets</a>
+          <a href="#contact" class="text-sm text-muted transition-colors hover:text-text">Contact</a>
+        </div>
 
-        <!-- Sélecteur de thèmes -->
-        <div class="theme-switcher flex items-center gap-2 border-l border-border pl-4" role="group" aria-label="Choix du thème">
+        <!-- Sélecteur de thèmes : toujours visible, y compris sur mobile -->
+        <div class="theme-switcher flex items-center gap-2 md:border-l md:border-border md:pl-4" role="group" aria-label="Choix du thème">
           <button class="theme-dot" data-theme-btn="cyber"  title="Cyber"   aria-label="Thème Cyber"   style="background:#58a6ff"></button>
           <button class="theme-dot" data-theme-btn="nord"   title="Nord"    aria-label="Thème Nord"    style="background:#88c0d0"></button>
           <button class="theme-dot" data-theme-btn="solar"  title="Solaire" aria-label="Thème Solaire" style="background:#cb4b16"></button>
           <button class="theme-dot" data-theme-btn="minuit" title="Minuit"  aria-label="Thème Minuit"  style="background:#a78bfa"></button>
         </div>
 
-        <button id="cv-mode-btn" class="ml-2 font-mono text-xs text-muted transition-colors hover:text-accent" title="Imprimer / exporter en PDF">⬡ Mode CV</button>
+        <button id="cv-mode-btn" class="hidden font-mono text-xs text-muted transition-colors hover:text-accent md:inline" title="Imprimer / exporter en PDF">⬡ Mode CV</button>
       </div>
-
-      <!-- Toggle mobile (liens masqués sur petit écran) -->
-      <button id="nav-toggle" class="text-text md:hidden" aria-label="Menu">☰</button>
     </div>
   </nav>
 
   <!-- ============================= MAIN ============================= -->
-  <main class="mx-auto max-w-content px-8 pt-[120px]">
+  <main class="mx-auto max-w-content px-5 pt-[96px] sm:px-8 md:pt-[120px]">
 
     <!-- ---------- HERO ---------- -->
     <section id="hero" class="flex min-h-[calc(100vh-120px)] flex-col justify-center">
@@ -409,7 +415,7 @@
     </section>
 
     <!-- ---------- À PROPOS ---------- -->
-    <section id="about" class="pt-[100px]">
+    <section id="about" class="pt-20 md:pt-[100px]">
       <div class="mb-10 fade-in">
         <p class="section-label mb-2">À propos</p>
         <h2 class="text-3xl font-bold text-text md:text-4xl">Qui suis-je ?</h2>
@@ -451,7 +457,7 @@
     </section>
 
     <!-- ---------- COMPÉTENCES ---------- -->
-    <section id="skills" class="pt-[100px]">
+    <section id="skills" class="pt-20 md:pt-[100px]">
       <div class="mb-10 fade-in">
         <p class="section-label mb-2">Compétences</p>
         <h2 class="text-3xl font-bold text-text md:text-4xl">Stack technique</h2>
@@ -489,7 +495,7 @@
     </section>
 
     <!-- ---------- PROJETS ---------- -->
-    <section id="projects" class="pt-[100px]">
+    <section id="projects" class="pt-20 md:pt-[100px]">
       <div class="mb-8 fade-in">
         <p class="section-label mb-2">Projets</p>
         <h2 class="text-3xl font-bold text-text md:text-4xl">Ce que j'ai construit</h2>
@@ -612,7 +618,7 @@
     </section>
 
     <!-- ---------- CONTACT ---------- -->
-    <section id="contact" class="flex flex-col items-center pt-[100px] text-center">
+    <section id="contact" class="flex flex-col items-center pt-20 text-center md:pt-[100px]">
       <p class="section-label mb-2 fade-in">Contact</p>
       <h2 class="mb-4 text-3xl font-bold text-text md:text-4xl fade-in">Travaillons ensemble</h2>
       <p class="mb-10 max-w-md text-muted fade-in">
@@ -631,8 +637,8 @@
   </main>
 
   <!-- ============================= FOOTER ============================= -->
-  <footer class="mt-[100px] border-t border-border">
-    <div class="mx-auto flex max-w-shell flex-col items-center justify-between gap-4 px-8 py-8 md:flex-row">
+  <footer class="mt-20 border-t border-border md:mt-[100px]">
+    <div class="mx-auto flex max-w-shell flex-col items-center justify-between gap-4 px-5 py-8 sm:px-8 md:flex-row">
       <p class="font-mono text-sm text-muted">Conçu &amp; développé par Hervé Béziat · 2026</p>
       <div class="flex gap-6">
         <a class="text-sm text-muted transition-colors hover:text-accent" href="https://github.com/herve-beziat" target="_blank" rel="noopener">GitHub</a>
