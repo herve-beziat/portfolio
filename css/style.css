@@ -324,6 +324,74 @@
     cursor: pointer;
   }
 
+  /* ---------- Bulle d'astuce (hint terminal) ---------- */
+  .terminal-hint {
+    position: fixed;
+    top: 24%;
+    right: 24px;
+    z-index: 1050;
+    max-width: min(92vw, 360px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: var(--bg2);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, .35);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    line-height: 1.4;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity .4s ease, transform .4s ease;
+    pointer-events: none;
+  }
+  .terminal-hint.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  /* petite pointe façon bulle de dialogue */
+  .terminal-hint::after {
+    content: "";
+    position: absolute;
+    bottom: -7px;
+    right: 26px;
+    width: 12px;
+    height: 12px;
+    background: var(--bg2);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    transform: rotate(45deg);
+  }
+  .terminal-hint-text { white-space: nowrap; }
+  .terminal-hint kbd {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 6px;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+  }
+  .terminal-hint-close {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 2px;
+    flex-shrink: 0;
+  }
+  .terminal-hint-close:hover { color: var(--accent); }
+  @media (max-width: 480px) {
+    .terminal-hint { top: 18%; right: 16px; left: 16px; max-width: none; }
+    .terminal-hint-text { white-space: normal; }
+  }
+
   /* ---------- Lightbox des captures projets ---------- */
   .project-thumb img { cursor: zoom-in; }
   .lightbox {
