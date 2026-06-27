@@ -206,100 +206,82 @@
       <!-- Grille -->
       <div class="projects-grid grid gap-6" style="grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));" id="projects-grid">
 
-        <article class="project-card card card-interactive flex flex-col fade-in" data-type="fullstack" data-techs="react,node.js,mongodb" style="--i:0">
-          <div class="mb-4 flex items-start justify-between">
-            <span class="text-3xl">🛒</span>
-            <div class="project-links flex gap-3 font-mono text-sm">
-              <a class="text-muted hover:text-accent" href="https://github.com/herve-beziat" target="_blank" rel="noopener">GitHub</a>
-              <a class="text-muted hover:text-accent" href="#" rel="noopener">Démo</a>
+
+        <article class="project-card card card-interactive flex flex-col fade-in" data-type="fullstack front back" data-techs="react native,php,codeigniter,mariadb,docker" style="--i:0">
+          <div class="project-thumb portrait"><img src="assets/img/schooltool.webp" alt="Aperçu de l'interface mobile de SchoolTool" loading="lazy" decoding="async" /></div>
+          <div class="project-body">
+            <h3 class="mb-2 text-lg font-bold text-text"><span class="mr-1">🎓</span>SchoolTool</h3>
+            <p class="mb-4 text-sm leading-relaxed text-muted">Intranet mobile pour La Plateforme : emplois du temps, notes, absences et infos de promotion, côté étudiants, enseignants et administration.</p>
+            <div class="mb-4 flex flex-wrap gap-2">
+              <span class="tag">React Native</span><span class="tag">PHP</span><span class="tag">CodeIgniter</span><span class="tag">MariaDB</span><span class="tag">Docker</span>
+              <span class="tag" style="color: var(--accent)">front</span><span class="tag" style="color: var(--accent)">back</span>
             </div>
-          </div>
-          <h3 class="mb-2 text-lg font-bold text-text">ShopFlow</h3>
-          <p class="mb-4 text-sm leading-relaxed text-muted">Plateforme e-commerce complète : panier, paiement, espace admin et gestion de stock en temps réel.</p>
-          <div class="mt-auto flex flex-wrap gap-2">
-            <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MongoDB</span>
-            <span class="tag" style="color: var(--accent)">fullstack</span>
+            <div class="project-links mt-auto flex flex-wrap items-center gap-4 border-t border-border pt-3 font-mono text-sm">
+              <a class="text-muted hover:text-accent" href="https://github.com/herve-beziat/SchoolTool" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
           </div>
         </article>
 
-        <article class="project-card card card-interactive flex flex-col fade-in" data-type="front" data-techs="react,typescript,d3.js" style="--i:1">
-          <div class="mb-4 flex items-start justify-between">
-            <span class="text-3xl">📊</span>
-            <div class="project-links flex gap-3 font-mono text-sm">
-              <a class="text-muted hover:text-accent" href="https://github.com/herve-beziat" target="_blank" rel="noopener">GitHub</a>
-              <a class="text-muted hover:text-accent" href="#" rel="noopener">Démo</a>
+        <article class="project-card card card-interactive flex flex-col fade-in" data-type="back" data-techs="docker,traefik,node.js,postgresql,grafana" style="--i:1">
+          <div class="project-thumb align-top"><img src="assets/img/devops.webp" alt="Aperçu de la stack DevOps Foundations" loading="lazy" decoding="async" /></div>
+          <div class="project-body">
+            <h3 class="mb-2 text-lg font-bold text-text"><span class="mr-1">🐳</span>DevOps Foundations</h3>
+            <p class="mb-4 text-sm leading-relaxed text-muted">Stack DevOps prête pour la production : Docker, reverse-proxy Traefik en TLS, monitoring Grafana/Prometheus et workflow Git professionnel.</p>
+            <div class="mb-4 flex flex-wrap gap-2">
+              <span class="tag">Docker</span><span class="tag">Traefik</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span><span class="tag">Grafana</span>
+              <span class="tag" style="color: var(--accent)">back</span>
             </div>
-          </div>
-          <h3 class="mb-2 text-lg font-bold text-text">DataViz Dashboard</h3>
-          <p class="mb-4 text-sm leading-relaxed text-muted">Tableau de bord interactif de visualisation de données avec graphiques dynamiques et filtres temps réel.</p>
-          <div class="mt-auto flex flex-wrap gap-2">
-            <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">D3.js</span>
-            <span class="tag" style="color: var(--accent)">front</span>
+            <div class="project-links mt-auto flex flex-wrap items-center gap-4 border-t border-border pt-3 font-mono text-sm">
+              <a class="text-muted hover:text-accent" href="https://github.com/herve-beziat/devops-foundations" target="_blank" rel="noopener">GitHub ↗</a>
+              <a class="text-muted hover:text-accent" href="https://youtu.be/tZpToiFgD1U" target="_blank" rel="noopener">Démo vidéo ↗</a>
+            </div>
           </div>
         </article>
 
-        <article class="project-card card card-interactive flex flex-col fade-in" data-type="front" data-techs="javascript,canvas api" style="--i:2">
-          <div class="mb-4 flex items-start justify-between">
-            <span class="text-3xl">🎮</span>
-            <div class="project-links flex gap-3 font-mono text-sm">
-              <a class="text-muted hover:text-accent" href="https://github.com/herve-beziat" target="_blank" rel="noopener">GitHub</a>
+        <article class="project-card card card-interactive flex flex-col fade-in" data-type="back" data-techs="go,grpc,rest,postgresql,k6" style="--i:2">
+          <div class="project-thumb"><img src="assets/img/benchlab.webp" alt="Aperçu du benchmark BenchLab (REST vs gRPC)" loading="lazy" decoding="async" /></div>
+          <div class="project-body">
+            <h3 class="mb-2 text-lg font-bold text-text"><span class="mr-1">🧪</span>BenchLab</h3>
+            <p class="mb-4 text-sm leading-relaxed text-muted">Benchmark REST vs gRPC sur des micro-services Go de monitoring de capteurs industriels (10 000 événements/min), avec tests de charge k6 et ghz.</p>
+            <div class="mb-4 flex flex-wrap gap-2">
+              <span class="tag">Go</span><span class="tag">gRPC</span><span class="tag">REST</span><span class="tag">PostgreSQL</span><span class="tag">k6</span>
+              <span class="tag" style="color: var(--accent)">back</span>
             </div>
-          </div>
-          <h3 class="mb-2 text-lg font-bold text-text">PixelQuest</h3>
-          <p class="mb-4 text-sm leading-relaxed text-muted">Petit jeu de plateforme rétro en JavaScript pur, rendu sur Canvas, avec moteur physique maison.</p>
-          <div class="mt-auto flex flex-wrap gap-2">
-            <span class="tag">JavaScript</span><span class="tag">Canvas API</span>
-            <span class="tag" style="color: var(--accent)">front</span>
+            <div class="project-links mt-auto flex flex-wrap items-center gap-4 border-t border-border pt-3 font-mono text-sm">
+              <a class="text-muted hover:text-accent" href="https://github.com/herve-beziat/BenchLab" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
           </div>
         </article>
 
-        <article class="project-card card card-interactive flex flex-col fade-in" data-type="back" data-techs="node.js,express,postgresql" style="--i:3">
-          <div class="mb-4 flex items-start justify-between">
-            <span class="text-3xl">🔌</span>
-            <div class="project-links flex gap-3 font-mono text-sm">
-              <a class="text-muted hover:text-accent" href="https://github.com/herve-beziat" target="_blank" rel="noopener">GitHub</a>
+        <article class="project-card card card-interactive flex flex-col fade-in" data-type="fullstack front back" data-techs="react native,expo,sqlite,gemini api,google oauth" style="--i:3">
+          <div class="project-thumb portrait"><img src="assets/img/foody.webp" alt="Capture d'écran de l'application mobile Foody" loading="lazy" decoding="async" /></div>
+          <div class="project-body">
+            <h3 class="mb-2 text-lg font-bold text-text"><span class="mr-1">🍳</span>Foody</h3>
+            <p class="mb-4 text-sm leading-relaxed text-muted">Application mobile de gestion de recettes : scan photo avec extraction par IA (Gemini), validation et catégories, recherche par ingrédient, export PDF et sauvegarde Google Drive.</p>
+            <div class="mb-4 flex flex-wrap gap-2">
+              <span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">SQLite</span><span class="tag">Gemini API</span><span class="tag">Google OAuth</span>
+              <span class="tag" style="color: var(--accent)">front</span><span class="tag" style="color: var(--accent)">back</span>
             </div>
-          </div>
-          <h3 class="mb-2 text-lg font-bold text-text">API Gateway</h3>
-          <p class="mb-4 text-sm leading-relaxed text-muted">API REST sécurisée avec authentification JWT, rate-limiting et documentation OpenAPI auto-générée.</p>
-          <div class="mt-auto flex flex-wrap gap-2">
-            <span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">PostgreSQL</span>
-            <span class="tag" style="color: var(--accent)">back</span>
+            <div class="project-links mt-auto flex flex-wrap items-center gap-4 border-t border-border pt-3 font-mono text-sm">
+              <span class="badge-private" title="Code source privé — disponible sur demande">🔒 Code privé · sur demande</span>
+            </div>
           </div>
         </article>
 
-        <article class="project-card card card-interactive flex flex-col fade-in" data-type="fullstack" data-techs="vue.js,laravel,mysql" style="--i:4">
-          <div class="mb-4 flex items-start justify-between">
-            <span class="text-3xl">📝</span>
-            <div class="project-links flex gap-3 font-mono text-sm">
-              <a class="text-muted hover:text-accent" href="https://github.com/herve-beziat" target="_blank" rel="noopener">GitHub</a>
-              <a class="text-muted hover:text-accent" href="#" rel="noopener">Démo</a>
+        <article class="project-card card card-interactive flex flex-col fade-in" data-type="fullstack front back" data-techs="electron,express,sqlite,javascript,jest" style="--i:4">
+          <div class="project-thumb"><img src="assets/img/pocketman.webp" alt="Capture d'écran de Pocketman, testeur d'API REST façon Postman" loading="lazy" decoding="async" /></div>
+          <div class="project-body">
+            <h3 class="mb-2 text-lg font-bold text-text"><span class="mr-1">📮</span>Pocketman</h3>
+            <p class="mb-4 text-sm leading-relaxed text-muted">Testeur d'API REST léger façon Postman, en application desktop Electron : serveur Express local, collections et historique persistants, 100 % hors-ligne.</p>
+            <div class="mb-4 flex flex-wrap gap-2">
+              <span class="tag">Electron</span><span class="tag">Express</span><span class="tag">SQLite</span><span class="tag">JavaScript</span><span class="tag">Jest</span>
+              <span class="tag" style="color: var(--accent)">front</span><span class="tag" style="color: var(--accent)">back</span>
+            </div>
+            <div class="project-links mt-auto flex flex-wrap items-center gap-4 border-t border-border pt-3 font-mono text-sm">
+              <span class="badge-private" title="Code source privé — disponible sur demande">🔒 Code privé · sur demande</span>
             </div>
           </div>
-          <h3 class="mb-2 text-lg font-bold text-text">TaskMaster</h3>
-          <p class="mb-4 text-sm leading-relaxed text-muted">Gestionnaire de tâches collaboratif avec tableaux Kanban, notifications et rôles d'équipe.</p>
-          <div class="mt-auto flex flex-wrap gap-2">
-            <span class="tag">Vue.js</span><span class="tag">Laravel</span><span class="tag">MySQL</span>
-            <span class="tag" style="color: var(--accent)">fullstack</span>
-          </div>
         </article>
-
-        <article class="project-card card card-interactive flex flex-col fade-in" data-type="front" data-techs="javascript,rest api,tailwind" style="--i:5">
-          <div class="mb-4 flex items-start justify-between">
-            <span class="text-3xl">🌦️</span>
-            <div class="project-links flex gap-3 font-mono text-sm">
-              <a class="text-muted hover:text-accent" href="https://github.com/herve-beziat" target="_blank" rel="noopener">GitHub</a>
-              <a class="text-muted hover:text-accent" href="#" rel="noopener">Démo</a>
-            </div>
-          </div>
-          <h3 class="mb-2 text-lg font-bold text-text">MétéoNow</h3>
-          <p class="mb-4 text-sm leading-relaxed text-muted">Application météo géolocalisée consommant une API tierce, avec prévisions sur 7 jours et thème adaptatif.</p>
-          <div class="mt-auto flex flex-wrap gap-2">
-            <span class="tag">JavaScript</span><span class="tag">REST API</span><span class="tag">Tailwind</span>
-            <span class="tag" style="color: var(--accent)">front</span>
-          </div>
-        </article>
-
       </div>
       <p id="no-results" class="mt-6 hidden font-mono text-sm text-muted">// aucun projet ne correspond à ce filtre.</p>
     </section>
@@ -342,6 +324,12 @@
       <span>&gt;</span>
       <input id="terminal-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Saisie terminal" />
     </div>
+  </div>
+
+  <!-- ============================= LIGHTBOX CAPTURES ============================= -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-label="Aperçu de la capture" aria-hidden="true">
+    <button id="lightbox-close" class="lightbox-close" aria-label="Fermer l'aperçu">×</button>
+    <img id="lightbox-img" src="" alt="" />
   </div>
 
   <!-- ============================= SCRIPTS ============================= -->

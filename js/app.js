@@ -59,7 +59,7 @@
     function applyFilters() {
       let visible = 0;
       cards.forEach((card) => {
-        const matchType = activeType === 'all' || card.dataset.type === activeType;
+        const matchType = activeType === 'all' || card.dataset.type.split(' ').includes(activeType);
         const cardTechs = card.dataset.techs.split(',').map((t) => t.trim());
         const matchTech = activeTech === 'all' || cardTechs.includes(activeTech);
         const show = matchType && matchTech;
@@ -245,4 +245,31 @@
         fall.onfinish = () => c.remove();
       }
     }
+    /* ---------- 7. Lightbox des captures projets ---------- */
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox) {
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxClose = document.getElementById('lightbox-close');
+      const openLightbox = (src, alt) => {
+        lightboxImg.src = src;
+        lightboxImg.alt = alt || '';
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+      };
+      const closeLightbox = () => {
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImg.removeAttribute('src');
+      };
+      document.querySelectorAll('.project-thumb img').forEach((img) => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', () => openLightbox(img.currentSrc || img.src, img.alt));
+      });
+      lightbox.addEventListener('click', closeLightbox);
+      lightboxClose.addEventListener('click', closeLightbox);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+      });
+    }
+
   })();
