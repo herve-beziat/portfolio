@@ -1,0 +1,477 @@
+  /* ============================================================
+     THÈMES — tokens de DESIGN.md / THEMES.md
+     Chaque thème redéfinit les variables via [data-theme="..."].
+     :root = valeurs Cyber (défaut + fallback). Switch géré en JS
+     (data-theme sur <html> + persistance localStorage).
+     ============================================================ */
+  :root,
+  [data-theme="cyber"] {
+    --bg: #0d1117;
+    --bg2: #161b22;
+    --bg3: #1f2937;
+    --border: #30363d;
+    --accent: #58a6ff;
+    --accent2: #79c0ff;
+    --neon: #3fb950;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --font-body: system-ui, -apple-system, sans-serif;
+    --font-mono: 'Courier New', monospace;
+    --btn-primary-text: #0d1117;
+  }
+
+  /* ---------- NORD (nordique épuré, palette froide) ---------- */
+  [data-theme="nord"] {
+    --bg: #2e3440;
+    --bg2: #3b4252;
+    --bg3: #434c5e;
+    --border: #4c566a;
+    --accent: #88c0d0;
+    --accent2: #81a1c1;
+    --neon: #a3be8c;
+    --text: #eceff4;
+    --muted: #d8dee9;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --font-body: 'Nunito', sans-serif;
+    --font-mono: 'Courier New', monospace;
+    --btn-primary-text: #2e3440;
+  }
+  [data-theme="nord"] .btn-outline { border-style: dashed; }
+
+  /* ---------- SOLAIRE (clair et chaleureux, Solarized Light) ---------- */
+  [data-theme="solar"] {
+    --bg: #fdf6e3;
+    --bg2: #eee8d5;
+    --bg3: #e0dac8;
+    --border: #cdc7b3;
+    --accent: #cb4b16;
+    --accent2: #d06f3a;
+    --neon: #859900;
+    --text: #073642;
+    --muted: #657b83;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --font-body: 'Lora', serif;
+    --font-mono: 'Courier New', monospace;
+    --btn-primary-text: #ffffff;
+  }
+  /* Boutons en pill + double bordure sur le outline */
+  [data-theme="solar"] .btn-primary { border-radius: 999px; }
+  [data-theme="solar"] .btn-outline {
+    border-radius: 999px;
+    outline: 1px solid var(--border);
+    outline-offset: 3px;
+  }
+
+  /* ---------- MINUIT (violet sombre, atmosphère créative) ---------- */
+  [data-theme="minuit"] {
+    --bg: #13111c;
+    --bg2: #1c1928;
+    --bg3: #252234;
+    --border: #312e45;
+    --accent: #a78bfa;
+    --accent2: #c4b5fd;
+    --neon: #f472b6;
+    --text: #ede9fe;
+    --muted: #a094c7;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --font-body: 'Poppins', sans-serif;
+    --font-mono: 'Courier New', monospace;
+    --btn-primary-text: #ffffff;
+  }
+  /* Primaire en dégradé, outline avec glow */
+  [data-theme="minuit"] .btn-primary {
+    background: linear-gradient(135deg, #a78bfa, #f472b6);
+    color: #fff;
+  }
+  [data-theme="minuit"] .btn-primary:hover {
+    background: linear-gradient(135deg, #c4b5fd, #f9a8d4);
+  }
+  [data-theme="minuit"] .btn-outline {
+    border-color: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+  }
+
+  /* Transition globale lors d'un changement de thème (spec THEMES.md) */
+  *, *::before, *::after {
+    transition: color .3s, background-color .3s, border-color .3s, box-shadow .3s;
+  }
+
+  /* ---------- Composants thématisés (via tokens) ---------- */
+  .section-label {
+    color: var(--neon);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--btn-primary-text);
+    border-radius: var(--radius);
+    padding: 10px 22px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--accent2); }
+  .btn-primary:active { transform: scale(.97); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 10px 22px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+  .btn-outline:hover { color: var(--accent); border-color: var(--accent); }
+  .btn-outline:active { transform: scale(.97); }
+
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+
+  .card-interactive { transition: transform .25s, border-color .25s, color .3s, background-color .3s; }
+  .card-interactive:hover { transform: translateY(-4px); border-color: var(--accent); }
+
+  .tag {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+  }
+
+  /* ---------- Sélecteur de thèmes ---------- */
+  .theme-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    padding: 0;
+    transition: transform .2s, border-color .2s;
+  }
+  .theme-dot:hover { transform: scale(1.2); }
+  .theme-dot[aria-pressed="true"] {
+    border-color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 0 6px rgba(255, 255, 255, .35);
+  }
+
+  /* ---------- Filtres projets ---------- */
+  .filter-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    padding: 6px 14px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+  .filter-btn:hover { color: var(--text); border-color: var(--accent); }
+  .filter-btn.active {
+    background: var(--accent);
+    color: var(--btn-primary-text);
+    border-color: var(--accent);
+  }
+
+  .project-card.is-hidden {
+    opacity: 0;
+    transform: scale(.96);
+    pointer-events: none;
+    display: none;
+  }
+
+  /* ---------- Cartes projets : vignette + corps + badge privé ---------- */
+  .project-card { padding: 0; overflow: hidden; }
+  .project-thumb {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background: var(--bg3);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .project-thumb img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .project-thumb.portrait {
+    background: var(--bg);
+  }
+  .project-thumb.portrait img {
+    object-fit: contain;
+    object-position: center;
+  }
+  .project-thumb.align-top img { object-position: top; }
+  .project-thumb.placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+  }
+  .project-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .badge-private {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 3px 8px;
+    white-space: nowrap;
+  }
+
+  /* ---------- Curseur clignotant ---------- */
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  .cursor {
+    display: inline-block;
+    width: 0.6ch;
+    height: 1em;
+    background: var(--neon);
+    margin-left: 4px;
+    transform: translateY(2px);
+    animation: blink 1s step-end infinite;
+  }
+
+  /* ---------- Animations au scroll ---------- */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity .5s ease, transform .5s ease;
+    transition-delay: calc(var(--i, 0) * 0.08s);
+  }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  /* ---------- Terminal easter egg ---------- */
+  #terminal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: #05080d;
+    color: #3fb950;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+    padding: 24px;
+    display: none;
+    flex-direction: column;
+  }
+  #terminal.open { display: flex; }
+  #terminal-output { flex: 1; overflow-y: auto; white-space: pre-wrap; line-height: 1.5; }
+  #terminal-output a { color: #58a6ff; text-decoration: underline; }
+  .term-input-line { display: flex; align-items: center; margin-top: 8px; }
+  .term-input-line > span { color: #3fb950; margin-right: 8px; }
+  #terminal-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #e6edf3;
+    font-family: inherit;
+    font-size: inherit;
+  }
+  #terminal-close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: #8b949e;
+    font-size: 1.4rem;
+    cursor: pointer;
+  }
+
+  /* ---------- Formulaire de contact ---------- */
+  .contact-form {
+    width: 100%;
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-align: left;
+  }
+  .contact-form .form-row { display: flex; gap: 14px; }
+  .contact-form .form-row > * { flex: 1; min-width: 0; }
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    padding: 12px 14px;
+  }
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder { color: var(--muted); }
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .contact-form textarea { resize: vertical; min-height: 120px; }
+  .contact-form button[type="submit"] { align-self: center; }
+  .contact-form button[disabled] { opacity: .6; cursor: not-allowed; }
+  .form-status { min-height: 1.2em; font-size: 0.9rem; text-align: center; }
+  .form-status.ok { color: var(--neon); }
+  .form-status.err { color: #f85149; }
+  @media (max-width: 480px) {
+    .contact-form .form-row { flex-direction: column; }
+  }
+
+  /* ---------- Bulle d'astuce (hint terminal) ---------- */
+  .terminal-hint {
+    position: fixed;
+    top: 24%;
+    right: 24px;
+    z-index: 1050;
+    max-width: min(92vw, 360px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: var(--bg2);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, .35);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    line-height: 1.4;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity .4s ease, transform .4s ease;
+    pointer-events: none;
+  }
+  .terminal-hint.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  /* petite pointe façon bulle de dialogue */
+  .terminal-hint::after {
+    content: "";
+    position: absolute;
+    bottom: -7px;
+    right: 26px;
+    width: 12px;
+    height: 12px;
+    background: var(--bg2);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    transform: rotate(45deg);
+  }
+  .terminal-hint-text { white-space: nowrap; }
+  .terminal-hint kbd {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 6px;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+  }
+  .terminal-hint-close {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 2px;
+    flex-shrink: 0;
+  }
+  .terminal-hint-close:hover { color: var(--accent); }
+  @media (max-width: 480px) {
+    .terminal-hint { top: 18%; right: 16px; left: 16px; max-width: none; }
+    .terminal-hint-text { white-space: normal; }
+  }
+
+  /* ---------- Lightbox des captures projets ---------- */
+  .project-thumb img { cursor: zoom-in; }
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    background: rgba(0, 0, 0, .85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    cursor: zoom-out;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 95%;
+    max-height: 90%;
+    border-radius: var(--radius);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, .6);
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 14px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  /* ---------- Terminal sur petit écran (évite le débordement de l'ASCII) ---------- */
+  @media (max-width: 480px) {
+    #terminal { font-size: 0.72rem; padding: 16px; }
+    #terminal-output { overflow-x: hidden; }
+  }
+
+  /* ---------- Accessibilité : mouvement réduit ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+    .fade-in { opacity: 1; transform: none; }
+  }

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="cyber">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Portfolio d'Hervé Béziat — développeur web full-stack, étudiant en Master Expert en Informatique et Systèmes d'Information. Front-end, back-end, DevOps et qualité logicielle." />
+<title>Hervé Béziat · Portfolio</title>
+
+<!-- Polices des thèmes alternatifs : Nunito (Nord), Lora (Solaire), Poppins (Minuit).
+     Le thème Cyber utilise la police système (aucun chargement). -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+<!-- Restaure le thème avant le premier paint (évite le flash) -->
+<script>
+  (function () {
+    var saved = localStorage.getItem('theme') || 'cyber';
+    document.documentElement.setAttribute('data-theme', saved);
+  })();
+</script>
+
+<!-- Tailwind compilé (npm run build). Config : tailwind.config.js -->
+<link rel="stylesheet" href="css/tailwind.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="font-body">
+
+  <!-- ============================= NAVBAR ============================= -->
+  <nav class="fixed top-0 inset-x-0 z-[100] h-[60px] border-b border-border" style="background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(12px);">
+    <div class="mx-auto flex h-full max-w-shell items-center justify-between px-5 sm:px-8">
+      <a href="#hero" class="font-mono text-xl font-bold text-accent">&lt;Hervé /&gt;</a>
+
+      <div class="flex items-center gap-4 md:gap-6">
+        <!-- Liens de navigation : masqués sous md (spec SECTIONS.md) -->
+        <div class="hidden items-center gap-8 md:flex">
+          <a href="#about" class="text-sm text-muted transition-colors hover:text-text">À propos</a>
+          <a href="#skills" class="text-sm text-muted transition-colors hover:text-text">Compétences</a>
+          <a href="#projects" class="text-sm text-muted transition-colors hover:text-text">Projets</a>
+          <a href="#contact" class="text-sm text-muted transition-colors hover:text-text">Contact</a>
+        </div>
+
+        <!-- Sélecteur de thèmes : toujours visible, y compris sur mobile -->
+        <div class="theme-switcher flex items-center gap-2 md:border-l md:border-border md:pl-4" role="group" aria-label="Choix du thème">
+          <button class="theme-dot" data-theme-btn="cyber"  title="Cyber"   aria-label="Thème Cyber"   style="background:#58a6ff"></button>
+          <button class="theme-dot" data-theme-btn="nord"   title="Nord"    aria-label="Thème Nord"    style="background:#88c0d0"></button>
+          <button class="theme-dot" data-theme-btn="solar"  title="Solaire" aria-label="Thème Solaire" style="background:#cb4b16"></button>
+          <button class="theme-dot" data-theme-btn="minuit" title="Minuit"  aria-label="Thème Minuit"  style="background:#a78bfa"></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================= MAIN ============================= -->
+  <main class="mx-auto max-w-content px-5 pt-[96px] sm:px-8 md:pt-[120px]">
+
+    <!-- ---------- HERO ---------- -->
+    <section id="hero" class="flex min-h-[calc(100vh-120px)] flex-col justify-center">
+      <p class="mb-4 font-mono text-base text-neon"><span class="opacity-60">&gt;</span> Bonjour, je suis</p>
+      <h1 class="font-bold leading-[1.1] text-text" style="font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 800;">
+        Hervé Béziat<span class="cursor" aria-hidden="true"></span>
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
+        Étudiant en Master <em>Expert en Informatique &amp; Systèmes d'Information</em>, je conçois
+        des applications full-stack robustes et évolutives — avec un soin particulier pour la qualité
+        logicielle, les tests automatisés et le déploiement continu.
+      </p>
+      <div class="hero-cta mt-10 flex flex-wrap gap-4">
+        <a href="#projects" class="btn-primary">Voir mes projets</a>
+        <a href="#contact" class="btn-outline">Me contacter</a>
+      </div>
+    </section>
+
+    <!-- ---------- À PROPOS ---------- -->
+    <section id="about" class="pt-20 md:pt-[100px]">
+      <div class="mb-10 fade-in">
+        <p class="section-label mb-2">À propos</p>
+        <h2 class="text-3xl font-bold text-text md:text-4xl">Qui suis-je ?</h2>
+      </div>
+      <div class="space-y-5 fade-in">
+        <p class="leading-relaxed text-muted">
+          Étudiant en Master — Expert en Informatique et Systèmes d'Information à La Plateforme
+          (Marseille), après un Bachelor Concepteur Développeur d'Applications. Je m'intéresse autant
+          au front-end qu'au back-end, avec une attention portée à la qualité logicielle, aux
+          architectures claires et à la fiabilité des déploiements.
+        </p>
+        <p class="leading-relaxed text-muted">
+          Avant le code, j'ai dirigé une cuisine et géré un restaurant pendant près de dix ans — une
+          reconversion qui m'a appris la rigueur, le travail sous pression et le sens du détail.
+          J'apporte aujourd'hui cette même exigence au développement, toujours en quête d'un nouveau
+          défi technique.
+        </p>
+      </div>
+
+      <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div class="card fade-in" style="--i:0">
+          <p class="section-label mb-2" style="color: var(--muted)">Formation</p>
+          <p class="font-medium text-text">Master — Expert en Informatique et Systèmes d'Information (spé DevOps)</p>
+          <p class="text-sm text-muted">La Plateforme, Marseille — 2025 / 2027 · RNCP40573 (niveau 7)</p>
+        </div>
+        <div class="card fade-in" style="--i:1">
+          <p class="section-label mb-2" style="color: var(--muted)">Localisation</p>
+          <p class="font-medium text-text">Région Sud (PACA)</p>
+          <p class="text-sm text-muted">Marseille · Var — mobilité régionale · télétravail ok</p>
+        </div>
+        <div class="card fade-in" style="--i:2">
+          <p class="section-label mb-2" style="color: var(--muted)">Disponibilité</p>
+          <p class="font-medium text-text">Alternance — dès maintenant</p>
+          <p class="text-sm text-muted">Rythme 4 sem. entreprise / 1 sem. école · jusqu'à sept. 2027</p>
+        </div>
+        <div class="card fade-in" style="--i:3">
+          <p class="section-label mb-2" style="color: var(--muted)">Langues</p>
+          <p class="font-medium text-text">Français (langue maternelle)</p>
+          <p class="text-sm text-muted">Anglais — TOEIC B2<br />Espagnol (intermédiaire)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- COMPÉTENCES ---------- -->
+    <section id="skills" class="pt-20 md:pt-[100px]">
+      <div class="mb-10 fade-in">
+        <p class="section-label mb-2">Compétences</p>
+        <h2 class="text-3xl font-bold text-text md:text-4xl">Stack technique</h2>
+      </div>
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2" style="grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));">
+        <div class="card card-interactive fade-in" style="--i:0">
+          <p class="section-label mb-4" style="color: var(--accent)">Front-end</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span>
+            <span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">React Native</span>
+            <span class="tag">Vue.js</span><span class="tag">Tailwind</span>
+          </div>
+        </div>
+        <div class="card card-interactive fade-in" style="--i:1">
+          <p class="section-label mb-4" style="color: var(--accent)">Back-end</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag">PHP</span><span class="tag">Symfony</span><span class="tag">CodeIgniter</span>
+            <span class="tag">WordPress</span><span class="tag">Node.js</span><span class="tag">Express</span>
+            <span class="tag">Go</span><span class="tag">Python</span><span class="tag">REST API</span><span class="tag">gRPC</span>
+          </div>
+        </div>
+        <div class="card card-interactive fade-in" style="--i:2">
+          <p class="section-label mb-4" style="color: var(--accent)">Base de données</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag">MySQL</span><span class="tag">MariaDB</span><span class="tag">PostgreSQL</span>
+            <span class="tag">SQLite</span><span class="tag">MongoDB</span>
+          </div>
+        </div>
+        <div class="card card-interactive fade-in" style="--i:3">
+          <p class="section-label mb-4" style="color: var(--accent)">DevOps &amp; Qualité</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag">Docker</span><span class="tag">CI/CD</span><span class="tag">GitHub Actions</span>
+            <span class="tag">Traefik</span><span class="tag">Grafana</span><span class="tag">Prometheus</span>
+            <span class="tag">Jest</span><span class="tag">k6</span>
+          </div>
+        </div>
+        <div class="card card-interactive fade-in" style="--i:4">
+          <p class="section-label mb-4" style="color: var(--accent)">Outils</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Figma</span>
+            <span class="tag">VS Code</span><span class="tag">Claude Code</span>
+          </div>
+        </div>
+        <div class="card card-interactive fade-in" style="--i:5">
+          <p class="section-label mb-4" style="color: var(--accent)">Méthodes &amp; gestion de projet</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag">Méthodes agiles</span><span class="tag">Recueil du besoin</span><span class="tag">Gestion de projet</span>
+            <span class="tag">Conduite du changement</span><span class="tag">Revue de code</span><span class="tag">Documentation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- PROJETS ---------- -->
+    <section id="projects" class="pt-20 md:pt-[100px]">
+      <div class="mb-8 fade-in">
+        <p class="section-label mb-2">Projets</p>
+        <h2 class="text-3xl font-bold text-text md:text-4xl">Ce que j'ai construit</h2>
+      </div>
+
+      <!-- Filtres -->
+      <div class="filters mb-8 space-y-3 fade-in">
+        <div class="flex flex-wrap items-center gap-2" id="filter-type">
+          <span class="mr-1 font-mono text-xs text-muted">type :</span>
+          <button class="filter-btn active" data-filter-type="all">Tous</button>
+          <button class="filter-btn" data-filter-type="front">Front-end</button>
+          <button class="filter-btn" data-filter-type="back">Back-end</button>
+          <button class="filter-btn" data-filter-type="fullstack">Fullstack</button>
+        </div>
+        <div class="flex flex-wrap items-center gap-2" id="filter-tech">
+          <span class="mr-1 font-mono text-xs text-muted">techno :</span>
+          <!-- boutons générés dynamiquement -->
+        </div>
+      </div>
+
+      <!-- Grille -->
+      <div class="projects-grid grid gap-6" style="grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));" id="projects-grid">
+
+
+        <article class="project-card card card-interactive flex flex-col fade-in" data-type="fullstack front back" data-techs="react native,php,codeigniter,mariadb,docker" style="--i:0">
+          <div class="project-thumb portrait"><img src="assets/img/schooltool.webp" alt="Aperçu de l'interface mobile de SchoolTool" loading="lazy" decoding="async" /></div>
+          <div class="project-body">
+            <h3 class="mb-2 text-lg font-bold text-text"><span class="mr-1">🎓</span>SchoolTool</h3>
+            <p class="mb-4 text-sm leading-relaxed text-muted">Intranet mobile pour La Plateforme : emplois du temps, notes, absences et infos de promotion, côté étudiants, enseignants et administration.</p>
+            <div class="mb-4 flex flex-wrap gap-2">
+              <span class="tag">React Native</span><span class="tag">PHP</span><span class="tag">CodeIgniter</span><span class="tag">MariaDB</span><span class="tag">Docker</span>
+              <span class="tag" style="color: var(--accent)">front</span><span class="tag" style="color: var(--accent)">back</span>
+            </div>
+            <div class="project-links mt-auto flex flex-wrap items-center gap-4 border-t border-border pt-3 font-mono text-sm">
+              <a class="text-muted hover:text-accent" href="https://github.com/herve-beziat/SchoolTool" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card card card-interactive flex flex-col fade-in" data-type="back" data-techs="docker,traefik,node.js,postgresql,grafana" style="--i:1">
+          <div class="project-thumb align-top"><img src="assets/img/devops.webp" alt="Aperçu de la stack DevOps Foundations" loading="lazy" decoding="async" /></div>
+          <div class="project-body">
+            <h3 class="mb-2 text-lg font-bold text-text"><span class="mr-1">🐳</span>DevOps Foundations</h3>
+            <p class="mb-4 text-sm leading-relaxed text-muted">Stack DevOps prête pour la production : Docker, reverse-proxy Traefik en TLS, monitoring Grafana/Prometheus et workflow Git professionnel.</p>
+            <div class="mb-4 flex flex-wrap gap-2">
+              <span class="tag">Docker</span><span class="tag">Traefik</span><span class="tag">Node.js</span><span class="tag">PostgreSQL</span><span class="tag">Grafana</span>
+              <span class="tag" style="color: var(--accent)">back</span>
+            </div>
+            <div class="project-links mt-auto flex flex-wrap items-center gap-4 border-t border-border pt-3 font-mono text-sm">
+              <a class="text-muted hover:text-accent" href="https://github.com/herve-beziat/devops-foundations" target="_blank" rel="noopener">GitHub ↗</a>
+              <a class="text-muted hover:text-accent" href="https://youtu.be/tZpToiFgD1U" target="_blank" rel="noopener">Démo vidéo ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card card card-interactive flex flex-col fade-in" data-type="back" data-techs="go,grpc,rest,postgresql,k6" style="--i:2">
+          <div class="project-thumb"><img src="assets/img/benchlab.webp" alt="Aperçu du benchmark BenchLab (REST vs gRPC)" loading="lazy" decoding="async" /></div>
+          <div class="project-body">
+            <h3 class="mb-2 text-lg font-bold text-text"><span class="mr-1">🧪</span>BenchLab</h3>
+            <p class="mb-4 text-sm leading-relaxed text-muted">Benchmark REST vs gRPC sur des micro-services Go de monitoring de capteurs industriels (10 000 événements/min), avec tests de charge k6 et ghz.</p>
+            <div class="mb-4 flex flex-wrap gap-2">
+              <span class="tag">Go</span><span class="tag">gRPC</span><span class="tag">REST</span><span class="tag">PostgreSQL</span><span class="tag">k6</span>
+              <span class="tag" style="color: var(--accent)">back</span>
+            </div>
+            <div class="project-links mt-auto flex flex-wrap items-center gap-4 border-t border-border pt-3 font-mono text-sm">
+              <a class="text-muted hover:text-accent" href="https://github.com/herve-beziat/BenchLab" target="_blank" rel="noopener">GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card card card-interactive flex flex-col fade-in" data-type="fullstack front back" data-techs="react native,expo,sqlite,gemini api,google oauth" style="--i:3">
+          <div class="project-thumb portrait"><img src="assets/img/foody.webp" alt="Capture d'écran de l'application mobile Foody" loading="lazy" decoding="async" /></div>
+          <div class="project-body">
+            <h3 class="mb-2 text-lg font-bold text-text"><span class="mr-1">🍳</span>Foody</h3>
+            <p class="mb-4 text-sm leading-relaxed text-muted">Application mobile de gestion de recettes : scan photo avec extraction par IA (Gemini), validation et catégories, recherche par ingrédient, export PDF et sauvegarde Google Drive.</p>
+            <div class="mb-4 flex flex-wrap gap-2">
+              <span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">SQLite</span><span class="tag">Gemini API</span><span class="tag">Google OAuth</span>
+              <span class="tag" style="color: var(--accent)">front</span><span class="tag" style="color: var(--accent)">back</span>
+            </div>
+            <div class="project-links mt-auto flex flex-wrap items-center gap-4 border-t border-border pt-3 font-mono text-sm">
+              <span class="badge-private" title="Code source privé — disponible sur demande">🔒 Code privé · sur demande</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card card card-interactive flex flex-col fade-in" data-type="fullstack front back" data-techs="electron,express,sqlite,javascript,jest" style="--i:4">
+          <div class="project-thumb"><img src="assets/img/pocketman.webp" alt="Capture d'écran de Pocketman, testeur d'API REST façon Postman" loading="lazy" decoding="async" /></div>
+          <div class="project-body">
+            <h3 class="mb-2 text-lg font-bold text-text"><span class="mr-1">📮</span>Pocketman</h3>
+            <p class="mb-4 text-sm leading-relaxed text-muted">Testeur d'API REST léger façon Postman, en application desktop Electron : serveur Express local, collections et historique persistants, 100 % hors-ligne.</p>
+            <div class="mb-4 flex flex-wrap gap-2">
+              <span class="tag">Electron</span><span class="tag">Express</span><span class="tag">SQLite</span><span class="tag">JavaScript</span><span class="tag">Jest</span>
+              <span class="tag" style="color: var(--accent)">front</span><span class="tag" style="color: var(--accent)">back</span>
+            </div>
+            <div class="project-links mt-auto flex flex-wrap items-center gap-4 border-t border-border pt-3 font-mono text-sm">
+              <span class="badge-private" title="Code source privé — disponible sur demande">🔒 Code privé · sur demande</span>
+            </div>
+          </div>
+        </article>
+      </div>
+      <p id="no-results" class="mt-6 hidden font-mono text-sm text-muted">// aucun projet ne correspond à ce filtre.</p>
+    </section>
+
+    <!-- ---------- CONTACT ---------- -->
+    <section id="contact" class="flex flex-col items-center pt-20 text-center md:pt-[100px]">
+      <p class="section-label mb-2 fade-in">Contact</p>
+      <h2 class="mb-4 text-3xl font-bold text-text md:text-4xl fade-in">Travaillons ensemble</h2>
+      <p class="mb-10 max-w-md text-muted fade-in">
+        Une opportunité d'alternance, de stage ou un projet en tête ? Écris-moi, je réponds vite.
+      </p>
+      <form id="contact-form" class="contact-form fade-in">
+        <!-- Clé Web3Forms (publique, liée à l'email de réception) -->
+        <input type="hidden" name="access_key" value="5ad61287-b327-462e-9b4f-2f7c5b010a01" />
+        <input type="hidden" name="subject" value="Nouveau message depuis le portfolio" />
+        <input type="hidden" name="from_name" value="Portfolio Hervé Béziat" />
+        <!-- Honeypot anti-spam : invisible, doit rester vide -->
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Votre nom" required autocomplete="name" />
+          <input type="email" name="email" placeholder="Votre email" required autocomplete="email" />
+        </div>
+        <textarea name="message" rows="5" placeholder="Votre message…" required></textarea>
+        <button type="submit" class="btn-primary">✉ Envoyer le message</button>
+        <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+      </form>
+      <div class="mt-8 flex flex-wrap justify-center gap-3 fade-in">
+        <a class="btn-outline" href="https://github.com/herve-beziat" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn-outline" href="https://www.linkedin.com/in/herv%C3%A9-beziat/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn-outline" href="cv.pdf" download="CV-Herve-Beziat.pdf">CV (PDF)</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================= FOOTER ============================= -->
+  <footer class="mt-20 border-t border-border md:mt-[100px]">
+    <div class="mx-auto flex max-w-shell flex-col items-center justify-between gap-4 px-5 py-8 sm:px-8 md:flex-row">
+      <p class="font-mono text-sm text-muted">Conçu &amp; développé par Hervé Béziat · 2026</p>
+      <div class="flex gap-6">
+        <a class="text-sm text-muted transition-colors hover:text-accent" href="https://github.com/herve-beziat" target="_blank" rel="noopener">GitHub</a>
+        <a class="text-sm text-muted transition-colors hover:text-accent" href="https://www.linkedin.com/in/herv%C3%A9-beziat/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================= TERMINAL EASTER EGG ============================= -->
+  <div id="terminal" role="dialog" aria-label="Terminal caché" aria-hidden="true">
+    <button id="terminal-close" aria-label="Fermer le terminal">×</button>
+    <div id="terminal-output"></div>
+    <div class="term-input-line">
+      <span>&gt;</span>
+      <input id="terminal-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Saisie terminal" />
+    </div>
+  </div>
+
+  <!-- ============================= HINT BULLE TERMINAL ============================= -->
+  <div id="terminal-hint" class="terminal-hint" role="status" aria-live="polite" hidden>
+    <span class="terminal-hint-text">💡 Psst… appuie sur <kbd>`</kbd> pour ouvrir un terminal caché</span>
+    <button id="terminal-hint-close" class="terminal-hint-close" aria-label="Fermer l'astuce">×</button>
+  </div>
+
+  <!-- ============================= LIGHTBOX CAPTURES ============================= -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-label="Aperçu de la capture" aria-hidden="true">
+    <button id="lightbox-close" class="lightbox-close" aria-label="Fermer l'aperçu">×</button>
+    <img id="lightbox-img" src="" alt="" />
+  </div>
+
+  <!-- ============================= SCRIPTS ============================= -->
+  <script src="js/app.js"></script>
+</body>
+</html>

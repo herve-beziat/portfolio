@@ -1,0 +1,13 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio d'Hervé Béziat — site statique HTML/CSS/JS, Tailwind compilé pour la prod.",
+  "scripts": {
+    "build": "tailwindcss -i ./css/tailwind.css -o ./css/tailwind.min.css --minify",
+    "watch": "tailwindcss -i ./css/tailwind.css -o ./css/tailwind.min.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}
