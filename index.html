@@ -312,13 +312,25 @@
       <p class="mb-10 max-w-md text-muted fade-in">
         Une opportunité d'alternance, de stage ou un projet en tête ? Écris-moi, je réponds vite.
       </p>
-      <div class="flex flex-col items-center gap-6 fade-in">
-        <a class="btn-primary" href="mailto:herve.beziat@laplateforme.io">✉ Envoyer un email</a>
-        <div class="flex flex-wrap justify-center gap-3">
-          <a class="btn-outline" href="https://github.com/herve-beziat" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn-outline" href="https://www.linkedin.com/in/herv%C3%A9-beziat/" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn-outline" href="cv.pdf" download="CV-Herve-Beziat.pdf">CV (PDF)</a>
+      <form id="contact-form" class="contact-form fade-in">
+        <!-- Clé Web3Forms (publique, liée à l'email de réception) -->
+        <input type="hidden" name="access_key" value="5ad61287-b327-462e-9b4f-2f7c5b010a01" />
+        <input type="hidden" name="subject" value="Nouveau message depuis le portfolio" />
+        <input type="hidden" name="from_name" value="Portfolio Hervé Béziat" />
+        <!-- Honeypot anti-spam : invisible, doit rester vide -->
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none" />
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Votre nom" required autocomplete="name" />
+          <input type="email" name="email" placeholder="Votre email" required autocomplete="email" />
         </div>
+        <textarea name="message" rows="5" placeholder="Votre message…" required></textarea>
+        <button type="submit" class="btn-primary">✉ Envoyer le message</button>
+        <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+      </form>
+      <div class="mt-8 flex flex-wrap justify-center gap-3 fade-in">
+        <a class="btn-outline" href="https://github.com/herve-beziat" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn-outline" href="https://www.linkedin.com/in/herv%C3%A9-beziat/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn-outline" href="cv.pdf" download="CV-Herve-Beziat.pdf">CV (PDF)</a>
       </div>
     </section>
 
