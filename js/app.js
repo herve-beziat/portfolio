@@ -217,12 +217,23 @@
 
     closeBtn.addEventListener('click', closeTerminal);
 
+    // Pastille permanente (coin bas-droit) : seul moyen d'ouvrir sur mobile,
+    // raccourci secondaire sur desktop. Appelle le même toggle que le clavier.
+    const toggleBtn = document.getElementById('terminal-toggle');
+    if (toggleBtn) toggleBtn.addEventListener('click', toggleTerminal);
+
+    function toggleTerminal() {
+      term.classList.contains('open') ? closeTerminal() : openTerminal();
+    }
+
     document.addEventListener('keydown', (e) => {
       const typing = ['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName);
-      // Ouverture via backtick (hors champ de saisie) ou Ctrl+~
-      if ((e.key === '`' && !typing) || (e.ctrlKey && e.key === '~')) {
+      // Ouverture via la touche physique en haut à gauche (e.code === 'Backquote') :
+      // indépendante de la disposition (AZERTY/QWERTY) et de l'OS — pas d'AltGr ni
+      // de touche morte, contrairement au caractère `…` qui bloquait sur Windows.
+      if (e.code === 'Backquote' && !typing) {
         e.preventDefault();
-        term.classList.contains('open') ? closeTerminal() : openTerminal();
+        toggleTerminal();
         return;
       }
       if (e.key === 'Escape' && term.classList.contains('open')) closeTerminal();
@@ -333,7 +344,7 @@
     /* ---------- 9. Découverte du terminal (A : console / B : bulle) ---------- */
     // A — clin d'œil pour les devs qui ouvrent la console
     console.log(
-      '%c👋 Curieux ?%c Appuie sur %c`%c (ou Ctrl+~) n\'importe où sur la page pour ouvrir un terminal caché.',
+      '%c👋 Curieux ?%c Appuie sur %c²%c (touche en haut à gauche) n\'importe où sur la page pour ouvrir un terminal caché.',
       'font-weight:bold;font-size:13px;color:#58a6ff',
       'color:inherit',
       'font-family:monospace;background:#1f2937;color:#79c0ff;padding:1px 5px;border-radius:3px',
@@ -358,10 +369,13 @@
         hint.classList.add('show');
         hideTimer = setTimeout(dismiss, 13000);
       }, 4000);
-      hintClose.addEventListener('click', dismiss);
-      // si le visiteur ouvre le terminal avant l'apparition, on annule la bulle
+      // clic sur la croix : ferme sans ouvrir le terminal
+      hintClose.addEventListener('click', (e) => { e.stopPropagation(); dismiss(); });
+      // clic sur le corps de la bulle : ouvre directement le terminal
+      hint.addEventListener('click', () => { dismiss(); openTerminal(); });
+      // si le visiteur ouvre le terminal au clavier avant l'apparition, on annule la bulle
       document.addEventListener('keydown', (e) => {
-        if ((e.key === '`') || (e.ctrlKey && e.key === '~')) {
+        if (e.code === 'Backquote') {
           clearTimeout(showTimer);
           sessionStorage.setItem('hintSeen', '1');
         }
