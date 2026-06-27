@@ -96,10 +96,7 @@
       faders.forEach((el) => io.observe(el));
     }
 
-    /* ---------- 5. Mode CV (impression) ---------- */
-    document.getElementById('cv-mode-btn').addEventListener('click', () => window.print());
-
-    /* ---------- 6. Easter egg : terminal ---------- */
+    /* ---------- 5. Easter egg : terminal ---------- */
     const term = document.getElementById('terminal');
     const output = document.getElementById('terminal-output');
     const input = document.getElementById('terminal-input');

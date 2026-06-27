@@ -368,30 +368,3 @@
     *, *::before, *::after { transition: none !important; animation: none !important; }
     .fade-in { opacity: 1; transform: none; }
   }
-
-  /* ============================================================
-     MODE CV / IMPRESSION (@media print)
-     ============================================================ */
-  @media print {
-    nav, footer, #terminal, .no-print,
-    .theme-switcher, .hero-cta, .project-links, .project-thumb, .filters {
-      display: none !important;
-    }
-    html, body {
-      background: #fff !important;
-      color: #000 !important;
-    }
-    main { max-width: 100% !important; padding-top: 0 !important; }
-    section { padding: 16px 0 !important; min-height: auto !important; page-break-inside: avoid; }
-    .section-label { color: #000 !important; }
-    .card, .tag, .btn-primary, .btn-outline {
-      background: #fff !important;
-      color: #000 !important;
-      border: 1px solid #999 !important;
-      box-shadow: none !important;
-    }
-    h1, h2, h3, p, span { color: #000 !important; }
-    .cursor { display: none !important; }
-    .projects-grid { grid-template-columns: repeat(2, 1fr) !important; }
-    @page { margin: 1.5cm; }
-  }
