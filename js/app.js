@@ -116,14 +116,8 @@
         '  exit         ferme le terminal\n' +
         '  sudo hire-me ???',
       whoami: () => 'Hervé Béziat — étudiant en Master Développement Web à La Plateforme (Marseille).',
-      skills: () => 'Front : HTML, CSS, JS, TypeScript, React, Vue, Tailwind\nBack  : Node.js, Express, PHP, Laravel\nData  : MySQL, PostgreSQL, MongoDB\nTools : Git, Docker, Figma',
-      projects: () =>
-        '- ShopFlow (fullstack) ......... https://github.com/herve-beziat\n' +
-        '- DataViz Dashboard (front) .... https://github.com/herve-beziat\n' +
-        '- PixelQuest (front) ........... https://github.com/herve-beziat\n' +
-        '- API Gateway (back) ........... https://github.com/herve-beziat\n' +
-        '- TaskMaster (fullstack) ....... https://github.com/herve-beziat\n' +
-        '- MétéoNow (front) ............. https://github.com/herve-beziat',
+      skills: () => readSkills(),
+      projects: () => readProjects(),
       contact: () =>
         'email    : herve.beziat@laplateforme.io\n' +
         'github   : https://github.com/herve-beziat\n' +
@@ -132,6 +126,37 @@
       exit: () => { closeTerminal(); return ''; },
       easter: () => { confetti(); return '🎉 woohoo !'; },
     };
+
+    // Lit les compétences directement depuis la section #skills (source unique de vérité)
+    function readSkills() {
+      const cards = Array.from(document.querySelectorAll('#skills .card'));
+      if (!cards.length) return 'Aucune compétence renseignée.';
+      const rows = cards.map((card) => ({
+        label: (card.querySelector('.section-label') || {}).textContent.trim(),
+        tags: Array.from(card.querySelectorAll('.tag')).map((t) => t.textContent.trim()),
+      }));
+      const pad = Math.max(...rows.map((r) => r.label.length));
+      return rows.map((r) => r.label.padEnd(pad) + ' : ' + r.tags.join(', ')).join('\n');
+    }
+
+    // Lit les projets directement depuis la section #projects (source unique de vérité)
+    function readProjects() {
+      const cards = Array.from(document.querySelectorAll('#projects .project-card'));
+      if (!cards.length) return 'Aucun projet pour le moment.';
+      return cards.map((card) => {
+        const h3 = card.querySelector('h3');
+        const emoji = h3.querySelector('span') ? h3.querySelector('span').textContent.trim() : '';
+        const name = h3.textContent.replace(emoji, '').trim();
+        const type = (card.dataset.type || '').split(/\s+/)[0] || '—';
+        const links = Array.from(card.querySelectorAll('.project-links a'));
+        let target;
+        if (links.length) target = links.map((a) => a.href).join('   ');
+        else if (card.querySelector('.badge-private')) target = '🔒 Code privé · sur demande';
+        else target = '—';
+        const head = (emoji ? emoji + ' ' : '') + name + ' (' + type + ')';
+        return head + '\n   ' + target;
+      }).join('\n');
+    }
 
     function print(text, cls) {
       const div = document.createElement('div');
@@ -173,6 +198,8 @@
     }
 
     function openTerminal() {
+      const hint = document.getElementById('terminal-hint');
+      if (hint) hint.classList.remove('show');
       term.classList.add('open');
       term.setAttribute('aria-hidden', 'false');
       if (!output.childElementCount) {
@@ -266,6 +293,44 @@
       lightboxClose.addEventListener('click', closeLightbox);
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+      });
+    }
+
+    /* ---------- 8. Découverte du terminal (A : console / B : bulle) ---------- */
+    // A — clin d'œil pour les devs qui ouvrent la console
+    console.log(
+      '%c👋 Curieux ?%c Appuie sur %c`%c (ou Ctrl+~) n\'importe où sur la page pour ouvrir un terminal caché.',
+      'font-weight:bold;font-size:13px;color:#58a6ff',
+      'color:inherit',
+      'font-family:monospace;background:#1f2937;color:#79c0ff;padding:1px 5px;border-radius:3px',
+      'color:inherit'
+    );
+
+    // B — bulle flottante, 1×/session, auto-disparition + fermable
+    const hint = document.getElementById('terminal-hint');
+    if (hint && !sessionStorage.getItem('hintSeen')) {
+      const hintClose = document.getElementById('terminal-hint-close');
+      let hideTimer;
+      const dismiss = () => {
+        hint.classList.remove('show');
+        clearTimeout(hideTimer);
+        sessionStorage.setItem('hintSeen', '1');
+        setTimeout(() => { hint.hidden = true; }, 400);
+      };
+      const showTimer = setTimeout(() => {
+        hint.hidden = false;
+        // force le reflow pour que la transition d'entrée joue
+        void hint.offsetWidth;
+        hint.classList.add('show');
+        hideTimer = setTimeout(dismiss, 13000);
+      }, 4000);
+      hintClose.addEventListener('click', dismiss);
+      // si le visiteur ouvre le terminal avant l'apparition, on annule la bulle
+      document.addEventListener('keydown', (e) => {
+        if ((e.key === '`') || (e.ctrlKey && e.key === '~')) {
+          clearTimeout(showTimer);
+          sessionStorage.setItem('hintSeen', '1');
+        }
       });
     }
 
