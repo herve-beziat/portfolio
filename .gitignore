@@ -5,3 +5,6 @@
 
 # Dossier de documentation à la racine
 /docs/
+
+# Dépendances npm (build Tailwind) — non déployées sur Plesk
+/node_modules/
