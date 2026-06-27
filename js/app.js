@@ -115,7 +115,7 @@
         '  clear        efface l\'écran\n' +
         '  exit         ferme le terminal\n' +
         '  sudo hire-me ???',
-      whoami: () => 'Hervé Béziat — étudiant en Master Développement Web à La Plateforme (Marseille).',
+      whoami: () => 'Hervé Béziat — développeur web full-stack, étudiant en Master Expert en Informatique & Systèmes d\'Information à La Plateforme (Marseille).',
       skills: () => readSkills(),
       projects: () => readProjects(),
       contact: () =>
