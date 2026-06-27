@@ -296,7 +296,41 @@
       });
     }
 
-    /* ---------- 8. Découverte du terminal (A : console / B : bulle) ---------- */
+    /* ---------- 8. Formulaire de contact (Web3Forms, envoi AJAX) ---------- */
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      const status = document.getElementById('form-status');
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = contactForm.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        status.className = 'form-status';
+        status.textContent = 'Envoi en cours…';
+        try {
+          const res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { Accept: 'application/json' },
+            body: new FormData(contactForm),
+          });
+          const json = await res.json();
+          if (json.success) {
+            status.textContent = '✅ Message envoyé, merci ! Je te réponds vite.';
+            status.classList.add('ok');
+            contactForm.reset();
+          } else {
+            status.textContent = '❌ ' + (json.message || 'Une erreur est survenue. Réessaie plus tard.');
+            status.classList.add('err');
+          }
+        } catch (err) {
+          status.textContent = '❌ Erreur réseau. Réessaie, ou écris-moi sur LinkedIn.';
+          status.classList.add('err');
+        } finally {
+          btn.disabled = false;
+        }
+      });
+    }
+
+    /* ---------- 9. Découverte du terminal (A : console / B : bulle) ---------- */
     // A — clin d'œil pour les devs qui ouvrent la console
     console.log(
       '%c👋 Curieux ?%c Appuie sur %c`%c (ou Ctrl+~) n\'importe où sur la page pour ouvrir un terminal caché.',

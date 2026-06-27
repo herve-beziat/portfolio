@@ -324,6 +324,45 @@
     cursor: pointer;
   }
 
+  /* ---------- Formulaire de contact ---------- */
+  .contact-form {
+    width: 100%;
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-align: left;
+  }
+  .contact-form .form-row { display: flex; gap: 14px; }
+  .contact-form .form-row > * { flex: 1; min-width: 0; }
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    padding: 12px 14px;
+  }
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder { color: var(--muted); }
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .contact-form textarea { resize: vertical; min-height: 120px; }
+  .contact-form button[type="submit"] { align-self: center; }
+  .contact-form button[disabled] { opacity: .6; cursor: not-allowed; }
+  .form-status { min-height: 1.2em; font-size: 0.9rem; text-align: center; }
+  .form-status.ok { color: var(--neon); }
+  .form-status.err { color: #f85149; }
+  @media (max-width: 480px) {
+    .contact-form .form-row { flex-direction: column; }
+  }
+
   /* ---------- Bulle d'astuce (hint terminal) ---------- */
   .terminal-hint {
     position: fixed;
